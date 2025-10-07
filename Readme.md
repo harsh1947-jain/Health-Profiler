@@ -155,6 +155,36 @@ All endpoints are `POST` requests.
     -   **Key**: `form` (or the key your multer instance is configured for)
     -   **Type**: `File`
     -   **Value**: Select an image containing Age/Smoker/Exercise/Diet info.
+ 
+Prompts Used and Refinements Made
+
+This project uses Google Gemini to generate safe lifestyle recommendations.
+The AI prompt is carefully crafted for safety and predictable JSON output:
+
+You are a helpful and safe health lifestyle assistant.
+
+Risk Level: ${risk.risk_level} (score ${risk.score}/100)
+Factors: ${factors.join(", ")}
+Age: ${answers.age || "unknown"}
+Diet: ${answers.diet || "unknown"}
+Exercise: ${answers.exercise || "unknown"}
+
+Write 3–5 very short, actionable, safe lifestyle recommendations to lower risk.
+Each recommendation should be a short phrase of at most 5 words.
+Return only a JSON array of short strings — no explanations, no notes, no disclaimers.
+
+Example:
+["Quit smoking","Reduce sugar","Walk 30 mins daily"]
+
+Refinements:
+
+✅ Strict output format — instructs Gemini to return only JSON.
+
+✅ Cleanup rules — removes parentheses, long text, and punctuation.
+
+✅ Fallback logic — uses local buildRecommendations() if AI fails.
+
+✅ Confidence check — prevents AI call if >50% data missing.
 
 
 ### Sample Output
