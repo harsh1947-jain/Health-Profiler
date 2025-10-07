@@ -1,21 +1,6 @@
 
 
 
-// import express from "express";
-// import healthRouter from "./routes/health.routes.js";
-
-// const app = express();
-// app.use(express.json({ limit: "2mb" }));
-
-// // mount the API
-// app.use("/api/health", healthRouter);
-
-// app.get("/health", (_, res) => res.json({ ok: true }));
-
-// const PORT = process.env.PORT || 4000;
-// app.listen(PORT, () => console.log(`OCR service running on :${PORT}`));
-
-
 import express from "express";
 import healthRouter from "./routes/health.routes.js";
 
