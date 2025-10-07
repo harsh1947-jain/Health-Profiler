@@ -156,7 +156,7 @@ All endpoints are `POST` requests.
     -   **Type**: `File`
     -   **Value**: Select an image containing Age/Smoker/Exercise/Diet info.
  
-Prompts Used and Refinements Made
+### Prompts Used and Refinements Made
 
 This project uses Google Gemini to generate safe lifestyle recommendations.
 The AI prompt is carefully crafted for safety and predictable JSON output:
