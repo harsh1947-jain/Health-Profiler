@@ -94,20 +94,25 @@ All endpoints are `POST` requests.
 -   **Description**: Normalizes input from JSON, text, or image and calculates a confidence score.
 -   **Body**: (JSON Example) `raw` → `JSON`
     Input (text):
-    {"age":42,"smoker":true,"exercise":"rarely","diet":"high sugar"}
+    {"age":40,"smoker":false,"exercise":"rarely","diet":"high sugar"}
 
     Input (image -> OCR sample):
-    Age: 42
-    Smoker: yes
+    Age: 40
+    Smoker: no
     Exercise: rarely
     Diet: high sugar
 
     Expected Output (JSON):
-     {
-       "answers":{"age":42,"smoker":true,"exercise":"rarely","diet":"high sugar"},
-       "missing_fields": [],
-       "confidence": 0.92
-     }
+    {
+    "answers": {
+        "age": 40,
+        "smoker": false,
+        "exercise": "rarely",
+        "diet": "high sugar"
+    },
+    "missing_fields": [],
+    "confidence": 1
+}
 
 
 #### 2. Extract Factors
@@ -116,10 +121,13 @@ All endpoints are `POST` requests.
 -   **Body**: 
  
      Expected Output (JSON):
-    {
-      "factors": ["smoking", "poor diet", "low exercise"],
-      "confidence": 0.88
-    }
+  {
+    "factors": [
+        "low exercise",
+        "poor diet"
+    ],
+    "confidence": 1
+}
 
 
 #### 3. Classify Risk
@@ -128,11 +136,14 @@ All endpoints are `POST` requests.
 -   **Body**: 
     
     Expected Output (JSON):
-   {
-   "risk_level": "high",
-   "score": 78,
-   "rationale": ["smoking", "high sugar diet", "low activity"]
-   }
+  {
+    "risk_level": "moderate",
+    "score": 40,
+    "rationale": [
+        "low exercise",
+        "poor diet"
+    ]
+}
 
 
 #### 4. Generate Recommendations
@@ -142,11 +153,18 @@ All endpoints are `POST` requests.
    
      Expected Output (JSON):
      {
-     "risk_level": "high",
-     "factors": ["smoking","poor diet","low exercise"],
-     "recommendations": ["Quit smoking","Reduce sugar","Walk 30 mins daily"],
-     "status":"ok"
-     }
+    "risk_level": "moderate",
+    "factors": [
+        "low exercise",
+        "poor diet"
+    ],
+    "recommendations": [
+        "Start walking 30 minutes daily",
+        "Aim for 150 minutes of moderate activity per week",
+        "Reduce added sugar and sugary beverages"
+    ],
+    "status": "ok"
+}
 
 
 ### Image Input (OCR)
@@ -155,6 +173,8 @@ All endpoints are `POST` requests.
     -   **Key**: `form` (or the key your multer instance is configured for)
     -   **Type**: `File`
     -   **Value**: Select an image containing Age/Smoker/Exercise/Diet info.
+
+
  
 ### Prompts Used and Refinements Made
 
@@ -190,6 +210,7 @@ Refinements:
 ### Sample Output
 
 
-<img width="940" height="657" alt="image" src="https://github.com/user-attachments/assets/d94ba112-8431-466e-92c1-fec430d4fa42" />
+
+<img width="953" height="612" alt="image" src="https://github.com/user-attachments/assets/b3a96bee-f1e7-4d59-b30c-33284004bd8e" />
 
 
