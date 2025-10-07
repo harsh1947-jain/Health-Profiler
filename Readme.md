@@ -202,8 +202,6 @@ Refinements:
 
 ✅ Cleanup rules — removes parentheses, long text, and punctuation.
 
-✅ Fallback logic — uses local buildRecommendations() if AI fails.
-
 ✅ Confidence check — prevents AI call if >50% data missing.
 
 
