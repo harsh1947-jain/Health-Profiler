@@ -66,7 +66,7 @@ health-risk-profiler/
 
 1.  **Clone the repository**
     ```bash
-    git clone 
+    git clone https://github.com/harsh1947-jain/Health-Profiler.git
     cd health-risk-profiler
     ```
 2.  **Install dependencies**
