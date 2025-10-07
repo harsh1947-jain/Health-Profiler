@@ -157,5 +157,9 @@ All endpoints are `POST` requests.
     -   **Value**: Select an image containing Age/Smoker/Exercise/Diet info.
 
 
+### Sample Output
+
+
+<img width="940" height="657" alt="image" src="https://github.com/user-attachments/assets/d94ba112-8431-466e-92c1-fec430d4fa42" />
 
 
